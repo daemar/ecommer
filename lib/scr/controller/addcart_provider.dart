@@ -14,11 +14,13 @@ class AddCartProvider extends ChangeNotifier {
 
   void disminish() {
     _dcountArticle--;
+    if (_dcountArticle < 0) _dcountArticle = 0;
     notifyListeners();
   }
 
   void gadd() {
     _gcountArticle = _gcountArticle + _dcountArticle;
+    if (_gcountArticle < 0) _gcountArticle = 0;
     notifyListeners();
   }
 }

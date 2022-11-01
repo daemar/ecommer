@@ -166,7 +166,8 @@ class DetailArticlePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Add to Cart'),
+                        const Text('Add to Cart',
+                            style: TextStyle(color: Colors.white)),
                         //*********** BUTTON DIMINISH*************************** */
                         IconButton(
                           icon: const Icon(Icons.remove_circle_outline),
@@ -177,7 +178,8 @@ class DetailArticlePage extends StatelessWidget {
                         ),
                         //*********** VALUE CART*************************** */
 
-                        Text(cartprv.dcountArticle.toString()),
+                        Text(cartprv.dcountArticle.toString(),
+                            style: const TextStyle(color: Colors.white)),
 
                         //*********** BUTTON ADD*************************** */
                         IconButton(
