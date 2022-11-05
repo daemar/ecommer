@@ -20,7 +20,7 @@ class MyorderGreat extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, 'articledetail');
                 },
-                child: const CardArticle(
+                child: CardArticle(
                   description: 'Zogaa FameSweater',
                   price: '\$ 42.63',
                   textsale: '234324 sales',
@@ -29,6 +29,7 @@ class MyorderGreat extends StatelessWidget {
                   image: 'assets/reloj.png',
                   sale: false,
                   elevation: 0,
+                  id: index.toString(),
                 ),
               );
             },
