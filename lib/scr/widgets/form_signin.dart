@@ -35,7 +35,12 @@ class FormSignIn extends StatelessWidget {
         style: TextStyle(color: Color.fromARGB(255, 20, 92, 88)),
       ),
       SizedBox(height: 30),
-      Button(text: '                Login               ', route: 'bar'),
+      Button(
+        text: '                Login               ',
+        route: 'bar',
+        colorbutton: Color.fromARGB(255, 3, 181, 204),
+        colortext: Colors.white,
+      ),
       SizedBox(height: 50),
       Text(
         'Or using social media',

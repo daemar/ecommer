@@ -1,3 +1,4 @@
+export 'package:ecommer/scr/pages/my_order_page.dart';
 export 'package:ecommer/scr/pages/account_page.dart';
 export 'package:ecommer/scr/pages/home_articulo_page.dart';
 export 'package:ecommer/scr/pages/home_page.dart';
@@ -7,3 +8,7 @@ export 'package:ecommer/scr/pages/signin_page.dart';
 export 'package:ecommer/scr/pages/signup_page.dart';
 export 'package:ecommer/scr/pages/favorite_page.dart';
 export 'package:ecommer/scr/pages/message_page.dart';
+export 'package:ecommer/scr/pages/cart_page.dart';
+export 'package:ecommer/scr/pages/checkout_page.dart';
+export 'package:ecommer/scr/pages/detail_article_page.dart';
+export 'package:ecommer/scr/pages/checkout_finalize_page.dart';

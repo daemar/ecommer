@@ -39,7 +39,7 @@ class CardArticle extends StatelessWidget {
                 image: AssetImage(image!),
                 height: 200,
                 width: 140,
-                alignment: Alignment.topCenter,
+                alignment: Alignment.center,
                 fit: BoxFit.contain,
               ),
             ),

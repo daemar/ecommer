@@ -64,16 +64,29 @@ class CheckoutPage extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.all(15.0),
-                child: ButtonPayment(simple: true, image: 'assets/paypal.png'),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(15.0),
-                child: ButtonPayment(simple: true, image: 'assets/paymac.png'),
+                child: ButtonPayment(
+                  simple: true,
+                  image: 'assets/paypal.png',
+                  route: '',
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: ButtonPayment(
-                    simple: false, image: '', text: 'Confirm', price: 54.98),
+                  simple: true,
+                  image: 'assets/paymac.png',
+                  route: '',
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: ButtonPayment(
+                  simple: false,
+                  image: '',
+                  text: 'Confirm',
+                  price: 54.98,
+                  route: 'checkoutfinal',
+                ),
               ),
             ],
           ),

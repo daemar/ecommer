@@ -1,5 +1,6 @@
 import 'package:ecommer/scr/controller/addcart_provider.dart';
 import 'package:ecommer/scr/controller/barbottom_provider.dart';
+import 'package:ecommer/scr/controller/barbutton_provider.dart';
 import 'package:ecommer/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommer/scr/routes/routes.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => BarbottomProvider()),
+          ChangeNotifierProvider(create: (_) => BarbuttonProvider()),
           ChangeNotifierProvider(create: (_) => AddCartProvider()),
         ],
         child: MaterialApp(

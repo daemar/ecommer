@@ -42,7 +42,12 @@ class ImageBanner extends StatelessWidget {
                       maxLines: 3)),
               Container(
                   padding: const EdgeInsets.all(20),
-                  child: Button(text: labelbutton, route: 'account'))
+                  child: Button(
+                    text: labelbutton,
+                    route: 'account',
+                    colorbutton: Theme.of(context).primaryColor,
+                    colortext: Colors.white,
+                  ))
             ],
           ),
         )

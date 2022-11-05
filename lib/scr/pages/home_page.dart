@@ -17,7 +17,12 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             alignment: Alignment.bottomRight,
             height: size.height * 0.1,
-            child: const Button(text: 'skip', route: 'signup'),
+            child: Button(
+              text: 'skip',
+              route: 'signup',
+              colorbutton: Theme.of(context).primaryColor,
+              colortext: Colors.white,
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(20),

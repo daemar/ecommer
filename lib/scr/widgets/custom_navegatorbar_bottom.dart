@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommer/scr/pages/account_page.dart';
-import 'package:ecommer/scr/pages/home_articulo_page.dart';
-import 'package:ecommer/scr/pages/notification_page.dart';
 import 'package:ecommer/scr/controller/barbottom_provider.dart';
 
 // ignore: must_be_immutable
@@ -12,13 +9,13 @@ class CustomNavegatorbarBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
-    final List<Widget> pageOptions = [
+    /* final List<Widget> pageOptions = [
       const NotificationPage(),
       const AccountPage(),
       const HomeArticuloPage(),
-    ];
+    ]; */
     final barBottomProvider = Provider.of<BarbottomProvider>(context);
-    final currentIndex = barBottomProvider.selectedMenuOpt;
+    int currentIndex = barBottomProvider.selectedMenuOpt;
     return BottomNavigationBar(
       onTap: (i) => barBottomProvider.selectedMenuOpt = i,
       currentIndex: currentIndex,

@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   final String text;
+  final Color colorbutton;
+  final Color colortext;
   final String route;
   const Button(
-      {super.key, required this.text, required this.route});
+      {super.key,
+      required this.text,
+      required this.route,
+      required this.colorbutton,
+      required this.colortext});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +21,10 @@ class Button extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          backgroundColor: Theme.of(context).primaryColor),
+          backgroundColor: colorbutton),
       child: Text(text,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: colortext,
           )),
     );
   }

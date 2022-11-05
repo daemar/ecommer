@@ -1,3 +1,4 @@
+export 'package:ecommer/scr/widgets/items_drawer.dart';
 export 'package:ecommer/scr/widgets/custom_navegatorbar_bottom.dart';
 export 'package:ecommer/scr/widgets/cart_appbar.dart';
 export 'package:ecommer/scr/widgets/icon_with_title.dart';

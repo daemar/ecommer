@@ -14,7 +14,14 @@ class CartAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'cart'),
+            onTap: () {
+              cartprvg.gcountArticle > 0
+                  ? Navigator.pushNamed(context, 'cart')
+                  : SnackBar(
+                      backgroundColor: Colors.teal[600],
+                      content: const Text('Cart empty',
+                          style: TextStyle(color: Colors.white)));
+            },
             child: Icon(
               Icons.shopping_cart_outlined,
               color: Colors.teal.shade800,

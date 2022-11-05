@@ -13,25 +13,35 @@ class ArticleSale extends StatelessWidget {
         itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
-          return Stack(
-            children: [
-              const CardArticle(
-                description: 'Zogaa FameSweater fdhsflhdsflfkhdsl',
-                price: '\$ 42.63',
-                textsale: '234324 sales',
-                icon: Icons.star,
-                favorite: 4.3,
-                image: 'assets/ropa2.jpg',
-                sale: true,
-                elevation: 4.0,
-              ),
-              Positioned(
-                right: 40,
-                child: Container(
-                    alignment: Alignment.topRight,
-                    child: const Button(text: '20 %', route: '')),
-              ),
-            ],
+          return GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, 'articledetail');
+            },
+            child: Stack(
+              children: [
+                const CardArticle(
+                  description: 'Zogaa FameSweater fdhsflhdsflfkhdsl',
+                  price: '\$ 42.63',
+                  textsale: '234324 sales',
+                  icon: Icons.star,
+                  favorite: 4.3,
+                  image: 'assets/reloj.png',
+                  sale: true,
+                  elevation: 4.0,
+                ),
+                Positioned(
+                  right: 40,
+                  child: Container(
+                      alignment: Alignment.topRight,
+                      child: Button(
+                        text: '20 %',
+                        route: '',
+                        colorbutton: Theme.of(context).primaryColor,
+                        colortext: Colors.white,
+                      )),
+                ),
+              ],
+            ),
           );
         },
       ),

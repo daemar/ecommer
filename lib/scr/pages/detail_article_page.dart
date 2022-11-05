@@ -14,6 +14,7 @@ class DetailArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final barBottomProvider = Provider.of<BarbottomProvider>(context);
     final cartprv = Provider.of<AddCartProvider>(context);
+
     final List textbutton = ['Product', 'Detail', 'Review'];
     final List viewoption = [
       const ArticleDetailInf(),
@@ -36,8 +37,7 @@ class DetailArticlePage extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.4,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                      // opacity: 30,
-                      image: AssetImage("assets/ropa3.png"),
+                      image: AssetImage("assets/reloj.png"),
                       fit: BoxFit.contain,
                     )),
                     child: //***************** TAB BOTTON  ****************** */
@@ -55,28 +55,26 @@ class DetailArticlePage extends StatelessWidget {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor:
-                                          barBottomProvider.selectedMenuOpt ==
-                                                  index
+                                          barBottomProvider.selectOpt == index
                                               ? Theme.of(context).primaryColor
                                               : Colors.white70,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       side: BorderSide(
-                                          color: !(barBottomProvider
-                                                      .selectedMenuOpt ==
-                                                  index)
-                                              ? Colors.green.shade100
-                                              : Colors.teal)),
+                                          color:
+                                              !(barBottomProvider.selectOpt ==
+                                                      index)
+                                                  ? Colors.green.shade100
+                                                  : Colors.teal)),
                                   onPressed: () {
-                                    barBottomProvider.selectedMenuOpt = index;
+                                    barBottomProvider.selectOpt = index;
                                   },
                                   child: Text(
                                     textbutton[index],
                                     style: TextStyle(
                                         color:
-                                            barBottomProvider.selectedMenuOpt ==
-                                                    index
+                                            barBottomProvider.selectOpt == index
                                                 ? Colors.white
                                                 : Colors.teal),
                                   )),
@@ -86,23 +84,6 @@ class DetailArticlePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  /* Container(
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                              Colors.transparent.withOpacity(0.9),
-                              Colors.transparent.withOpacity(0.6),
-                              Colors.white.withOpacity(0.9),
-                            ],
-                            stops: [
-                              0.5,
-                              0.3,
-                              0.5
-                            ],
-                            begin: FractionalOffset.topCenter,
-                            end: FractionalOffset.bottomCenter),
-                      )), */
 
                   //************ APPBAR *********** */
                   Padding(
@@ -132,7 +113,7 @@ class DetailArticlePage extends StatelessWidget {
               ),
 
               //********* VIEWTAB************ */
-              viewoption[barBottomProvider.selectedMenuOpt],
+              viewoption[barBottomProvider.selectOpt],
             ],
           ),
         ),

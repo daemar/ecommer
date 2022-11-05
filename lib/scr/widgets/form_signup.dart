@@ -37,7 +37,12 @@ class FormSignUp extends StatelessWidget {
         suffixIcon: Icons.visibility_off_outlined,
       ),
       SizedBox(height: 30),
-      Button(text: '                Sign Up                ', route: 'signin'),
+      Button(
+        text: '                Sign Up                ',
+        route: 'signin',
+        colorbutton: Color.fromARGB(255, 3, 181, 204),
+        colortext: Colors.white,
+      ),
       SizedBox(height: 50),
       Text(
         'Or using social media',

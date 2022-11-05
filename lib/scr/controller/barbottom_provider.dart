@@ -2,13 +2,23 @@ import 'package:flutter/material.dart';
 
 class BarbottomProvider extends ChangeNotifier {
   int _selectedMenuOpt = 2;
+  int _selectOpt = 0;
 
   int get selectedMenuOpt {
     return _selectedMenuOpt;
   }
 
+  int get selectOpt {
+    return _selectOpt;
+  }
+
   set selectedMenuOpt(int i) {
     _selectedMenuOpt = i;
+    notifyListeners();
+  }
+
+  set selectOpt(int i) {
+    _selectOpt = i;
     notifyListeners();
   }
 
@@ -24,6 +34,8 @@ class BarbottomProvider extends ChangeNotifier {
         return "Message";
       case 4:
         return "Favorite";
+      case 5:
+        return "My Order";
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ButtonPayment extends StatelessWidget {
   final String? text;
   final double? price;
+  final String route;
   final String image;
   final bool simple;
   const ButtonPayment(
@@ -10,12 +11,15 @@ class ButtonPayment extends StatelessWidget {
       this.text,
       this.price,
       required this.image,
-      required this.simple});
+      required this.simple,
+      required this.route});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, route);
+      },
       child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
