@@ -19,7 +19,7 @@ class ArticleSale extends StatelessWidget {
             },
             child: Stack(
               children: [
-                const CardArticle(
+                CardArticle(
                   description: 'Zogaa FameSweater fdhsflhdsflfkhdsl',
                   price: '\$ 42.63',
                   textsale: '234324 sales',
@@ -28,6 +28,7 @@ class ArticleSale extends StatelessWidget {
                   image: 'assets/reloj.png',
                   sale: true,
                   elevation: 4.0,
+                  id: index.toString(),
                 ),
                 Positioned(
                   right: 40,

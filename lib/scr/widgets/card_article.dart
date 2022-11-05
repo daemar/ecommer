@@ -4,6 +4,7 @@ class CardArticle extends StatelessWidget {
   final String description;
   final String? image;
   final String price;
+  final String id;
   final String textsale;
   final IconData icon;
   final double favorite;
@@ -18,7 +19,8 @@ class CardArticle extends StatelessWidget {
       required this.favorite,
       this.image,
       required this.sale,
-      required this.elevation});
+      required this.elevation,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +37,15 @@ class CardArticle extends StatelessWidget {
             //****  IMAGEN */
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image(
-                image: AssetImage(image!),
-                height: 200,
-                width: 140,
-                alignment: Alignment.center,
-                fit: BoxFit.contain,
+              child: Hero(
+                tag: id,
+                child: Image(
+                  image: AssetImage(image!),
+                  height: 200,
+                  width: 140,
+                  alignment: Alignment.center,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             CardDescription(),
