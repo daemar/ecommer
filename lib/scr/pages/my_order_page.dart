@@ -1,9 +1,6 @@
 import 'package:ecommer/scr/controller/barbutton_provider.dart';
-import 'package:ecommer/scr/widgets/article_detail_inf.dart';
-import 'package:ecommer/scr/widgets/description_article_inf.dart';
 import 'package:ecommer/scr/widgets/my_order_great.dart';
 import 'package:ecommer/scr/widgets/my_order_list.dart';
-import 'package:ecommer/scr/widgets/review_detail_inf.dart';
 import 'package:ecommer/scr/widgets/title_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
