@@ -23,7 +23,7 @@ class MyorderGreat extends StatelessWidget {
                 child: CardArticle(
                   description: 'Zogaa FameSweater',
                   price: '\$ 42.63',
-                  textsale: '234324 sales',
+                  textsale: 34,
                   icon: Icons.star,
                   favorite: 4.3,
                   image: 'assets/reloj.png',

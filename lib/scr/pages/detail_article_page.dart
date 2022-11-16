@@ -1,10 +1,8 @@
+import 'package:ecommer/scr/controller/article_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommer/scr/controller/addcart_provider.dart';
 import 'package:ecommer/scr/controller/barbottom_provider.dart';
-import 'package:ecommer/scr/widgets/article_detail_inf.dart';
-import 'package:ecommer/scr/widgets/description_article_inf.dart';
-import 'package:ecommer/scr/widgets/review_detail_inf.dart';
 import 'package:ecommer/scr/widgets/widget.dart';
 
 class DetailArticlePage extends StatelessWidget {
@@ -12,15 +10,30 @@ class DetailArticlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int id = ModalRoute.of(context)!.settings.arguments as int;
     final barBottomProvider = Provider.of<BarbottomProvider>(context);
     final cartprv = Provider.of<AddCartProvider>(context);
+    final articleProvider = Provider.of<ArticleProvider>(context);
+    articleProvider.getArticleId(id);
+    final product = articleProvider.articleid;
+    cartprv.setActiveItem(product);
 
-    final List textbutton = ['Product', 'Detail', 'Review'];
     final List viewoption = [
-      const ArticleDetailInf(),
-      const DescriptionArticleInf(),
+      product.description != null
+          ? ArticleDetailInf(
+              description: product.description.toString(),
+            )
+          : const Center(child: CircularProgressIndicator()),
+      product.description != ''
+          ? DescriptionArticleInf(
+              description: product.description.toString(),
+            )
+          : const Center(child: CircularProgressIndicator()),
       const ReviewDetailInf()
     ];
+    // ignore: avoid_print
+    print('PRODUCT:  $product');
+    final List textbutton = ['Product', 'Detail', 'Review'];
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: SingleChildScrollView(
@@ -32,58 +45,64 @@ class DetailArticlePage extends StatelessWidget {
                 children: [
                   //*************** IMAGE CONTAINER************************** */
 
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                      image: AssetImage("assets/reloj.png"),
-                      fit: BoxFit.contain,
-                    )),
-                    child: //***************** TAB BOTTON  ****************** */
-                        SizedBox(
-                      height: 40,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 85),
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: viewoption.length,
-                          itemBuilder: (_, index) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 15.0),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          barBottomProvider.selectOpt == index
-                                              ? Theme.of(context).primaryColor
-                                              : Colors.white70,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      side: BorderSide(
-                                          color:
-                                              !(barBottomProvider.selectOpt ==
-                                                      index)
-                                                  ? Colors.green.shade100
-                                                  : Colors.teal)),
-                                  onPressed: () {
-                                    barBottomProvider.selectOpt = index;
-                                  },
-                                  child: Text(
-                                    textbutton[index],
-                                    style: TextStyle(
-                                        color:
-                                            barBottomProvider.selectOpt == index
-                                                ? Colors.white
-                                                : Colors.teal),
-                                  )),
-                            );
-                          },
+                  product.description != ''
+                      ? Container(
+                          alignment: Alignment.bottomCenter,
+                          height: MediaQuery.of(context).size.height * 0.4,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            image: NetworkImage(product.image.toString()),
+                            fit: BoxFit.contain,
+                          )),
+                          child: //***************** TAB BOTTON  ****************** */
+                              SizedBox(
+                            height: 40,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 85),
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: viewoption.length,
+                                itemBuilder: (_, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15.0),
+                                    child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: barBottomProvider
+                                                        .selectOpt ==
+                                                    index
+                                                ? Theme.of(context).primaryColor
+                                                : Colors.white70,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            side: BorderSide(
+                                                color: !(barBottomProvider
+                                                            .selectOpt ==
+                                                        index)
+                                                    ? Colors.green.shade100
+                                                    : Colors.teal)),
+                                        onPressed: () {
+                                          barBottomProvider.selectOpt = index;
+                                        },
+                                        child: Text(
+                                          textbutton[index],
+                                          style: TextStyle(
+                                              color:
+                                                  barBottomProvider.selectOpt ==
+                                                          index
+                                                      ? Colors.white
+                                                      : Colors.teal),
+                                        )),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(),
                         ),
-                      ),
-                    ),
-                  ),
 
                   //************ APPBAR *********** */
                   Padding(
@@ -154,12 +173,12 @@ class DetailArticlePage extends StatelessWidget {
                           icon: const Icon(Icons.remove_circle_outline),
                           color: Colors.white,
                           onPressed: () {
-                            cartprv.disminish();
+                            cartprv.disminishOneItem(cartprv.activeItems);
                           },
                         ),
                         //*********** VALUE CART*************************** */
 
-                        Text(cartprv.dcountArticle.toString(),
+                        Text(cartprv.valueing.toString(),
                             style: const TextStyle(color: Colors.white)),
 
                         //*********** BUTTON ADD*************************** */
@@ -167,7 +186,7 @@ class DetailArticlePage extends StatelessWidget {
                           icon: const Icon(Icons.add_circle_outline_sharp,
                               color: Colors.white),
                           onPressed: () {
-                            cartprv.add();
+                            cartprv.addOneItem(cartprv.activeItems);
                           },
                         ),
                       ],

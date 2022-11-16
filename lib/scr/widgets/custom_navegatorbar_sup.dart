@@ -1,13 +1,17 @@
+import 'package:ecommer/scr/controller/article_provider.dart';
 import 'package:ecommer/scr/widgets/article_category.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavegatorBarSup extends StatelessWidget {
   const CustomNavegatorBarSup({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
+    final Categories = Provider.of<ArticleProvider>(context);
     return DefaultTabController(
-      length: 4,
+      length: Categories.categories.length,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -17,6 +21,10 @@ class CustomNavegatorBarSup extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: Theme.of(context).primaryColor),
             child: TabBar(
+              onTap: (value) {
+                Provider.of<ArticleProvider>(context, listen: false).status =
+                    true;
+              },
               isScrollable: true,
               indicatorPadding: const EdgeInsets.all(10),
               labelColor: Theme.of(context).primaryColor,
@@ -27,37 +35,24 @@ class CustomNavegatorBarSup extends StatelessWidget {
               indicator: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               tabs: [
-                Row(
-                  children: const [
-                    Icon(Icons.shower),
+                for (int i = 0; i < Categories.categories.length; i++)
+                  Row(children: [
+                    const Icon(Icons.shower),
                     Text(
-                      'Men',
-                    )
-                  ],
-                ),
-                Row(
-                  children: const [Icon(Icons.shower), Text('Woman')],
-                ),
-                Row(
-                  children: const [Icon(Icons.shower), Text('child')],
-                ),
-                Row(
-                  children: const [Icon(Icons.shower), Text('accesories')],
-                ),
+                      Categories.categories[i],
+                    ),
+                  ]),
               ],
             ),
           ),
-          const SizedBox(
-            height: 1700,
-            child:
-                TabBarView(physics: NeverScrollableScrollPhysics(), children: [
-              ArticleCategory(
-                category: '1',
-              ),
-              ArticleCategory(category: '2'),
-              ArticleCategory(category: '3'),
-              ArticleCategory(category: '1'),
-            ]),
+          SizedBox(
+            height: 360,
+            child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  for (int j = 0; j < 4; j++)
+                    ArticleCategory(category: Categories.categories[j]),
+                ]),
           ),
         ],
       ),

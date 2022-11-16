@@ -15,7 +15,7 @@ class CartAppBar extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              cartprvg.gcountArticle > 0
+              cartprvg.getAllCarQty() > 0
                   ? Navigator.pushNamed(context, 'cart')
                   : SnackBar(
                       backgroundColor: Colors.teal[600],
@@ -37,7 +37,7 @@ class CartAppBar extends StatelessWidget {
             backgroundColor: Colors.teal[400],
             foregroundColor: Colors.white,
             child: Text(
-              cartprvg.gcountArticle.toString(),
+              cartprvg.getAllCarQty().toString(),
               style:
                   const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
             ),

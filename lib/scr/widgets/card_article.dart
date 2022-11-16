@@ -5,7 +5,7 @@ class CardArticle extends StatelessWidget {
   final String? image;
   final String price;
   final String id;
-  final String textsale;
+  final double textsale;
   final IconData icon;
   final double favorite;
   final double elevation;
@@ -37,15 +37,12 @@ class CardArticle extends StatelessWidget {
             //****  IMAGEN */
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Hero(
-                tag: id,
-                child: Image(
-                  image: AssetImage(image!),
-                  height: 200,
-                  width: 140,
-                  alignment: Alignment.center,
-                  fit: BoxFit.contain,
-                ),
+              child: Image(
+                image: NetworkImage(image!),
+                height: 200,
+                width: 140,
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
               ),
             ),
             CardDescription(),
@@ -94,10 +91,10 @@ class CardArticle extends StatelessWidget {
                 //******** LINEARPROGRESS */
                 Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: const LinearProgressIndicator(
-                      value: 0.2,
+                    child: LinearProgressIndicator(
+                      value: (textsale / 1000),
                       backgroundColor: Colors.grey,
-                      valueColor: AlwaysStoppedAnimation(Colors.teal),
+                      valueColor: const AlwaysStoppedAnimation(Colors.teal),
                     ),
                   ),
             //*********** START ROW */
@@ -105,7 +102,7 @@ class CardArticle extends StatelessWidget {
               //*********  SALE */
               Container(
                   padding: const EdgeInsets.only(left: 20),
-                  child: Text(textsale,
+                  child: Text('${textsale.toString()} sales',
                       style: TextStyle(color: Colors.teal[800]))),
               //***** SPACE */
               const SizedBox(width: 20),

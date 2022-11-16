@@ -1,32 +1,15 @@
+import 'package:ecommer/scr/controller/addcart_provider.dart';
 import 'package:ecommer/scr/widgets/bottom_price_cart.dart';
 import 'package:ecommer/scr/widgets/item_shopping_cart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Map<int, dynamic> articles = {
-      0: {
-        'descrip': 'Zapatillas',
-        'price': 44.90,
-        'img': 'assets/ropa2.jpg',
-        'count': 0,
-      },
-      1: {
-        'descrip': 'Dress',
-        'price': 54.90,
-        'img': 'assets/ropa3.jpg',
-        'count': 0,
-      },
-      2: {
-        'descrip': 'Zapatillas',
-        'price': 64.90,
-        'img': 'assets/ropa4.jpg',
-        'count': 0,
-      },
-    };
+    final cartprv = Provider.of<AddCartProvider>(context);
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
@@ -72,17 +55,19 @@ class CartPage extends StatelessWidget {
                   height: 440,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
-                    itemCount: articles.length,
+                    itemCount: cartprv.cart.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                           margin: const EdgeInsets.all(8),
                           color: Colors.white,
                           child: ItemshoppingCart(
-                              id: index,
-                              image: articles[index]['img'],
-                              title: articles[index]['descrip'],
-                              subtitle: articles[index]['price'],
-                              count: articles[index]['count']));
+                            id: index,
+                            image: cartprv.cart[index].image.toString(),
+                            title: cartprv.cart[index].title.toString(),
+                            subtitle: cartprv.cart[index].price,
+                            count: cartprv.cart[index].qty,
+                            i: index,
+                          ));
                     },
                   ),
                 ),

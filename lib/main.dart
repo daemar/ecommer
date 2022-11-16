@@ -1,4 +1,5 @@
 import 'package:ecommer/scr/controller/addcart_provider.dart';
+import 'package:ecommer/scr/controller/article_provider.dart';
 import 'package:ecommer/scr/controller/barbottom_provider.dart';
 import 'package:ecommer/scr/controller/barbutton_provider.dart';
 import 'package:ecommer/theme/app_theme.dart';
@@ -15,9 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => BarbottomProvider()),
-          ChangeNotifierProvider(create: (_) => BarbuttonProvider()),
-          ChangeNotifierProvider(create: (_) => AddCartProvider()),
+          ChangeNotifierProvider(
+              create: (_) => BarbottomProvider(), lazy: false),
+          ChangeNotifierProvider(
+              create: (_) => BarbuttonProvider(), lazy: false),
+          ChangeNotifierProvider(create: (_) => AddCartProvider(), lazy: false),
+          ChangeNotifierProvider(
+            create: (_) => ArticleProvider(),
+            lazy: false,
+          ),
         ],
         child: MaterialApp(
             title: 'Material App',

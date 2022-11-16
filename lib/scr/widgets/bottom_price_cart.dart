@@ -1,4 +1,6 @@
+import 'package:ecommer/scr/controller/addcart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BottomPriceCart extends StatelessWidget {
   final String text;
@@ -6,6 +8,9 @@ class BottomPriceCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartprv = Provider.of<AddCartProvider>(context);
+    double montt = (cartprv.montAllCarQty() * 0.2) + cartprv.montAllCarQty();
+    double monti = cartprv.montAllCarQty() * 0.2;
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(20.0),
@@ -23,7 +28,7 @@ class BottomPriceCart extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              '\$50.23',
+              '\$ ${cartprv.montAllCarQty().toStringAsFixed(2)}',
               style: TextStyle(
                   color: Colors.teal[900], fontWeight: FontWeight.bold),
             ),
@@ -42,7 +47,7 @@ class BottomPriceCart extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              '\$13.23',
+              monti.toStringAsFixed(2),
               style: TextStyle(
                   color: Colors.teal[900], fontWeight: FontWeight.bold),
             ),
@@ -50,7 +55,7 @@ class BottomPriceCart extends StatelessWidget {
         ]),
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, 'checkout');
+            Navigator.pushNamed(context, 'checkout', arguments: montt);
           },
           child: Container(
               decoration: BoxDecoration(
@@ -70,9 +75,9 @@ class BottomPriceCart extends StatelessWidget {
                 const SizedBox(
                   width: 50,
                 ),
-                const Text(
-                  '\$55.36',
-                  style: TextStyle(
+                Text(
+                  '\$ ${((cartprv.montAllCarQty() * 0.2) + cartprv.montAllCarQty()).toStringAsFixed(2)}',
+                  style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ])),

@@ -2,7 +2,8 @@ import 'package:ecommer/scr/widgets/article_sale.dart';
 import 'package:flutter/material.dart';
 
 class ArticleDetailInf extends StatelessWidget {
-  const ArticleDetailInf({super.key});
+  final String description;
+  const ArticleDetailInf({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +23,15 @@ class ArticleDetailInf extends StatelessWidget {
                       fontSize: 18)),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
-            child: Text(
-              'Adipisicing cupidatat dolor Lorem eiusmod in irure amet excepteur. Sit quis sunt occaecat cillum enim id. Cillum fugiat consectetur aliquip exercitation tempor reprehenderit in quis tempor aute est mollit. Eiusmod excepteur cillum laboris officia.',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.cyan[900]),
+          if (description.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Text(
+                description,
+                textAlign: TextAlign.left,
+                style: TextStyle(color: Colors.cyan[900]),
+              ),
             ),
-          ),
           Row(
             children: [
               Icon(Icons.description_outlined,

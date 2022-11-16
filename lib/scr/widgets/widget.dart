@@ -19,3 +19,6 @@ export 'package:ecommer/scr/widgets/redes_sociales.dart';
 export 'package:ecommer/scr/widgets/slider_page.dart';
 export 'package:ecommer/scr/widgets/textfield_search.dart';
 export 'package:ecommer/scr/widgets/title_icon.dart';
+export 'package:ecommer/scr/widgets/article_detail_inf.dart';
+export 'package:ecommer/scr/widgets/description_article_inf.dart';
+export 'package:ecommer/scr/widgets/review_detail_inf.dart';

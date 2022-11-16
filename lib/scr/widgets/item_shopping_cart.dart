@@ -4,17 +4,19 @@ import 'package:ecommer/scr/controller/addcart_provider.dart';
 
 class ItemshoppingCart extends StatelessWidget {
   final int id;
+  final int i;
   final String image;
   final String title;
-  final double subtitle;
+  final double? subtitle;
   final int count;
   const ItemshoppingCart(
       {super.key,
       required this.image,
       required this.title,
-      required this.subtitle,
+      this.subtitle,
       required this.count,
-      required this.id});
+      required this.id,
+      required this.i});
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +25,20 @@ class ItemshoppingCart extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
         children: [
-          Image(image: AssetImage(image), height: 60, width: 50),
+          Image(image: NetworkImage(image), height: 60, width: 50),
           const SizedBox(
             width: 50,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyle(color: Colors.teal[900])),
+              SizedBox(
+                  width: 250,
+                  child: Text(title,
+                      style: TextStyle(color: Colors.teal[900]),
+                      overflow: TextOverflow.ellipsis)),
               Text(
-                '\$ ${subtitle.toString()}',
+                '\$ ${subtitle!.toStringAsFixed(2)}',
                 style: TextStyle(
                     color: Colors.teal[900], fontWeight: FontWeight.bold),
               ),
@@ -50,12 +56,12 @@ class ItemshoppingCart extends StatelessWidget {
                   //barBottomProvi
                   //der.selectedMenuOpt = id;
 
-                  cartprv.add();
+                  cartprv.addOneItem(cartprv.cart[i]);
                 },
               ),
               //*********** VALUE CART*************************** */
 
-              Text(cartprv.dcountArticle.toString(),
+              Text(cartprv.cart[i].qty.toString(),
                   style: TextStyle(color: Colors.teal[900])),
 
               //*********** BUTTON DIMINISH*************************** */
@@ -64,7 +70,7 @@ class ItemshoppingCart extends StatelessWidget {
                 color: Colors.teal[900],
                 onPressed: () {
                   //barBottomProvider.selectedMenuOpt = id;
-                  cartprv.disminish();
+                  cartprv.disminishOneItem(cartprv.cart[i]);
                 },
               ),
             ],

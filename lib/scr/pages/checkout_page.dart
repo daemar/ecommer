@@ -8,6 +8,7 @@ class CheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double montpay = ModalRoute.of(context)!.settings.arguments as double;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[50],
@@ -78,13 +79,13 @@ class CheckoutPage extends StatelessWidget {
                   route: '',
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(15.0),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
                 child: ButtonPayment(
                   simple: false,
                   image: '',
                   text: 'Confirm',
-                  price: 54.98,
+                  price: montpay.toDouble(),
                   route: 'checkoutfinal',
                 ),
               ),

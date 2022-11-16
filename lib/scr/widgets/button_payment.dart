@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../controller/addcart_provider.dart';
 
 class ButtonPayment extends StatelessWidget {
   final String? text;
@@ -18,6 +21,7 @@ class ButtonPayment extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Provider.of<AddCartProvider>(context, listen: false).deleteProduct();
         Navigator.pushNamed(context, route);
       },
       child: Container(

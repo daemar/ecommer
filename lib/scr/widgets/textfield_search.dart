@@ -1,3 +1,4 @@
+import 'package:ecommer/scr/controller/search/search_delegate.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldSearch extends StatelessWidget {
@@ -6,21 +7,24 @@ class TextFieldSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: const InputDecoration(
-          prefixIcon: Icon(Icons.search, color: Colors.grey),
-          suffixIcon: Icon(Icons.tune_outlined, color: Colors.grey),
+      decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.search, color: Colors.grey),
+          suffixIcon: GestureDetector(
+              onTap: () => showSearch(
+                  context: context, delegate: ArticleSearchDelegate()),
+              child: const Icon(Icons.tune_outlined, color: Colors.grey)),
           filled: true,
           fillColor: Colors.white,
           hintText: 'Search',
-          hintStyle: TextStyle(color: Colors.grey),
-          enabledBorder: OutlineInputBorder(
+          hintStyle: const TextStyle(color: Colors.grey),
+          enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(20),
               ),
               borderSide: BorderSide(
                 color: Colors.white,
               )),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(20),
               ),
