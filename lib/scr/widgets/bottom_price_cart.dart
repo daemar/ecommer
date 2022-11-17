@@ -1,4 +1,5 @@
 import 'package:ecommer/scr/controller/addcart_provider.dart';
+import 'package:ecommer/scr/controller/barbutton_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,9 +9,15 @@ class BottomPriceCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool statusbutton = Provider.of<BarbuttonProvider>(context).button1;
     final cartprv = Provider.of<AddCartProvider>(context);
     double montt = (cartprv.montAllCarQty() * 0.2) + cartprv.montAllCarQty();
     double monti = cartprv.montAllCarQty() * 0.2;
+    if (cartprv.cart.isNotEmpty) {
+      statusbutton = true;
+    } else {
+      statusbutton = false;
+    }
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(20.0),
@@ -55,12 +62,15 @@ class BottomPriceCart extends StatelessWidget {
         ]),
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, 'checkout', arguments: montt);
+            if (statusbutton == true) {
+              Navigator.pushNamed(context, 'checkout', arguments: montt);
+            }
           },
           child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Theme.of(context).primaryColor,
+                color:
+                    statusbutton ? Theme.of(context).primaryColor : Colors.grey,
               ),
               width: 350,
               height: 45,

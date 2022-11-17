@@ -26,9 +26,7 @@ class ItemshoppingCart extends StatelessWidget {
       child: Row(
         children: [
           Image(image: NetworkImage(image), height: 60, width: 50),
-          const SizedBox(
-            width: 50,
-          ),
+          const Spacer(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

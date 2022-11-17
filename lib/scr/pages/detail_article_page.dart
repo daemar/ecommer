@@ -34,6 +34,7 @@ class DetailArticlePage extends StatelessWidget {
     // ignore: avoid_print
     print('PRODUCT:  $product');
     final List textbutton = ['Product', 'Detail', 'Review'];
+    final double buttons = MediaQuery.of(context).size.width * 0.1;
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: SingleChildScrollView(
@@ -58,7 +59,7 @@ class DetailArticlePage extends StatelessWidget {
                               SizedBox(
                             height: 40,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 85),
+                              padding: EdgeInsets.only(left: buttons),
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: viewoption.length,
@@ -117,9 +118,7 @@ class DetailArticlePage extends StatelessWidget {
                             Navigator.pop(context);
                           },
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                        ),
+                        const Spacer(),
                         const CartAppBar(),
                         CircleAvatar(
                           backgroundColor: Colors.teal.shade400,

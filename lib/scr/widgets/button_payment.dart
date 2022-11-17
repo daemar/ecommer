@@ -46,7 +46,7 @@ class ButtonPayment extends StatelessWidget {
               ),
             if (!simple)
               Text(
-                '\$ ${price!}',
+                '\$ ${price!.toStringAsFixed(2)}',
                 style: const TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),

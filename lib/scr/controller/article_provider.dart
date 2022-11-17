@@ -57,14 +57,6 @@ class ArticleProvider extends ChangeNotifier {
         status = false;
       }
     }
-
-    /* if (category.isNotEmpty) {
-      var url = Uri.https(_baseurl, '/products/category/$category');
-      final response = await http.get(url);
-
-      // Await the http get response, then decode the json-formatted response.
-      List<dynamic> decodedDataAC = json.decode(response.body);
-      articlecategory = decodedDataAC;} */
   }
 
   getArticleId(int id) async {

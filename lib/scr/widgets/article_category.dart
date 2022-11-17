@@ -26,25 +26,22 @@ class ArticleCategory extends StatelessWidget {
           print(product.articles[index].title);
           print(count);
           return GestureDetector(
-            onTap: () {
-              Provider.of<ArticleProvider>(context, listen: false).statusid =
-                  true;
-              Navigator.pushNamed(context, 'articledetail',
-                  arguments: product.articles[index].id);
-            },
-            child: product.articles != null
-                ? CardArticle(
-                    description: product.articles[index].title.toString(),
-                    price: '\$ ${product.articles[index].price.toString()}',
-                    textsale: product.articles[index].rating!.count!.toDouble(),
-                    icon: Icons.star,
-                    favorite: product.articles[index].rating!.rate!.toDouble(),
-                    image: product.articles[index].image,
-                    sale: false,
-                    elevation: 0,
-                    id: index.toString())
-                : const Center(child: CircularProgressIndicator()),
-          );
+              onTap: () {
+                Provider.of<ArticleProvider>(context, listen: false).statusid =
+                    true;
+                Navigator.pushNamed(context, 'articledetail',
+                    arguments: product.articles[index].id);
+              },
+              child: CardArticle(
+                  description: product.articles[index].title.toString(),
+                  price: '\$ ${product.articles[index].price.toString()}',
+                  textsale: product.articles[index].rating!.count!.toDouble(),
+                  icon: Icons.star,
+                  favorite: product.articles[index].rating!.rate!.toDouble(),
+                  image: product.articles[index].image,
+                  sale: false,
+                  elevation: 0,
+                  id: index.toString()));
         }, childCount: count),
       )
     ]);
