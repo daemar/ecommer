@@ -4,12 +4,15 @@ import 'package:ecommer/scr/widgets/item_shopping_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../controller/article_provider.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final cartprv = Provider.of<AddCartProvider>(context);
+    Provider.of<ArticleProvider>(context).status = true;
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
